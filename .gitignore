@@ -1,0 +1,49 @@
+# Ignore OS specific patterns
+.DS_Store
+.DS_Store?
+Thumbs.db
+.Trashes
+
+## Ignore NodeJS specific items
+**/node_modules
+package-lock.json
+
+# Ignore OCE Toolkit specific directories
+## Server credentials
+**/src/servers/*
+## Translation job data
+**/src/translationJobs/*
+## Dist folder where built zips are stored
+**/dist
+## Build folder used as a staging ground for preparing builds
+**/build
+
+## Ignore OCE Toolkit specific files and symbolic links
+## Fallback connetivity config file
+cec.properties
+## Symbolic link for theme layouts
+src/themes/**/layouts/_scs_theme_root_
+## Symbolic link for theme designs
+src/themes/**/designs/_scs_design_name_
+
+# Ignore specific components
+## These might exist to look at and for reference
+src/components/Sample-To-Do/**
+src/components/StarterComponent/**
+src/components/RCS_Settings/**
+ 
+# Ignore content templates
+src/templates
+
+# Ignore any exported content
+src/content/*
+src/documents/*
+## Sample to allow in a specific content export if needed
+#!/src/content/ArticleDefExport
+
+# Ignore editor-specific workspace files
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+.vscode
+src/themes/Blank-EnterpriseTheme/publish/
