@@ -1,0 +1,63 @@
+{
+    "PushNotificationPdfDocument": {
+        "Countries": [],
+        "Categories": [],
+        "Attributes": [
+            {
+                "AttributeId": "PA000057",
+                "Values": [
+                    {
+                        "DefaultValue": "D103246X014",
+                        "McmId": "TV011134",
+                        "Translations": [
+                            {
+                                "LanguageId": "L000000",
+                                "Value": "D103246X014",
+                                "McmId": "TV011134"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "StringDefinitions": [
+            {
+                "DefinitionId": "SD000018",
+                "Name": "ManufacturePartNumber",
+                "Value": "MR105"
+            },
+            {
+                "DefinitionId": "SD000020",
+                "Name": "ExportDocumentType",
+                "Value": "Manuals"
+            }
+        ],
+        "Products": [
+            "P001504"
+        ],
+        "TaxonomyList": [],
+        "Entry": [],
+        "SEO": {
+            "Title": "Manuals: MR105 Installation Guide, Fisher, Regulators (VCIGD-14505-EN)",
+            "Keywords": [
+                "MR105 Installation Guide"
+            ],
+            "Description": "MR105 Installation Guide"
+        },
+        "Identifier": "VCIGD-14505-EN",
+        "FileName": "VCIGD-14505-EN.pdf",
+        "Title": "Manuals: MR105 Installation Guide, Fisher",
+        "LanguageCode": "L000003",
+        "Brand": "B4634086",
+        "FileUrl": "https://topcat.mcm-plus.com/Files/History/VCIGD-14505-EN.pdf?id=320674&hash=bcac2c205ee8c44dc93c1988afa472e03da2a41d&uid=4729681",
+        "FileType": "FT000001",
+        "FileTimeStamp": "2022-02-08T14:36:39.000",
+        "FileMD5Hash": null,
+        "DocumentType": "DT000042",
+        "McmId": "DV4857004",
+        "IsoCode": "en-gb",
+        "TriggerEvent": "EV000001",
+        "TimeStamp": "2022-02-09T11:40:20.949",
+        "Action": "UPDATE"
+    }
+}
