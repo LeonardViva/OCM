@@ -1,0 +1,250 @@
+{
+  "webhook": {
+    "id": 2201,
+    "name": "Travis Publishing test"
+  },
+  "event": {
+    "id": "2b8f9f64-c545-4376-886c-3621fff06d31",
+    "name": "CHANNEL_ASSETPUBLISHED",
+    "registeredAt": "2022-03-28T20:03:09.975Z",
+    "initiatedBy": "bcoats"
+  },
+  "entity": {
+    "id": "RCHANNEL70779ADEA13849E0B2FC6E9DE9AAB2D7",
+    "name": "public",
+    "items": [
+      {
+        "translatable": true,
+        "createdDate": {
+          "value": "2022-02-16T22:14:45.731Z",
+          "timezone": "UTC"
+        },
+        "name": "f220118_sm_toyfinder_nonholiday_mob_nav.jpg",
+        "repositoryId": "810903DB893B4C3DA6D885534D6BF73B",
+        "description": "",
+        "language": "en-US",
+        "links": [
+          {
+            "href": "https://rcsocedev-rcsmobile.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/CONT77D3AB5D83ED4489A6F704D4017E60A9",
+            "rel": "self",
+            "method": "GET",
+            "mediaType": "application/json"
+          }
+        ],
+        "id": "CONT77D3AB5D83ED4489A6F704D4017E60A9",
+        "updatedDate": {
+          "value": "2022-03-28T20:03:03.966Z",
+          "timezone": "UTC"
+        },
+        "type": "FHT_Image",
+        "fields": {
+          "metadata": {
+            "width": "300",
+            "height": "300"
+          },
+          "keywords": [
+            "toys",
+            "kids",
+            "playful"
+          ],
+          "refresh_date": {
+            "value": "2022-02-04T00:00:00.000-06:00",
+            "timezone": "America/Chicago"
+          },
+          "creative_reviewer": null,
+          "mimeType": "image/jpeg",
+          "product_code": null,
+          "requestor": [
+            "Jason Stortz"
+          ],
+          "business_reviewer": null,
+          "creative_contributor": null,
+          "size": 23569,
+          "native": {
+            "links": [
+              {
+                "href": "https://rcsocedev-rcsmobile.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONT77D3AB5D83ED4489A6F704D4017E60A9/native/f220118_sm_toyfinder_nonholiday_mob_nav.jpg",
+                "rel": "self",
+                "method": "GET",
+                "mediaType": "image/jpeg"
+              }
+            ]
+          },
+          "campaign": null,
+          "renditions": [
+            {
+              "name": "Thumbnail",
+              "formats": [
+                {
+                  "format": "jpg",
+                  "size": 0,
+                  "mimeType": "image/jpeg",
+                  "metadata": {
+                    "width": "150",
+                    "height": "150"
+                  },
+                  "links": [
+                    {
+                      "href": "https://rcsocedev-rcsmobile.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONT77D3AB5D83ED4489A6F704D4017E60A9/Thumbnail/f220118_sm_toyfinder_nonholiday_mob_nav.jpg?format=jpg&type=responsiveimage",
+                      "rel": "self",
+                      "method": "GET",
+                      "mediaType": "image/jpeg"
+                    }
+                  ]
+                },
+                {
+                  "format": "webp",
+                  "size": 0,
+                  "mimeType": "image/webp",
+                  "metadata": {
+                    "width": "150",
+                    "height": "150"
+                  },
+                  "links": [
+                    {
+                      "href": "https://rcsocedev-rcsmobile.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONT77D3AB5D83ED4489A6F704D4017E60A9/Thumbnail/f220118_sm_toyfinder_nonholiday_mob_nav.jpg?format=webp&type=responsiveimage",
+                      "rel": "self",
+                      "method": "GET",
+                      "mediaType": "image/webp"
+                    }
+                  ]
+                }
+              ],
+              "type": "responsiveimage"
+            },
+            {
+              "name": "Medium",
+              "formats": [
+                {
+                  "format": "jpg",
+                  "size": 23569,
+                  "mimeType": "image/jpeg",
+                  "metadata": {
+                    "width": "300",
+                    "height": "300"
+                  },
+                  "links": [
+                    {
+                      "href": "https://rcsocedev-rcsmobile.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONT77D3AB5D83ED4489A6F704D4017E60A9/Medium/f220118_sm_toyfinder_nonholiday_mob_nav.jpg?format=jpg&type=responsiveimage",
+                      "rel": "self",
+                      "method": "GET",
+                      "mediaType": "image/jpeg"
+                    }
+                  ]
+                },
+                {
+                  "format": "webp",
+                  "size": 0,
+                  "mimeType": "image/webp",
+                  "metadata": {
+                    "width": "300",
+                    "height": "300"
+                  },
+                  "links": [
+                    {
+                      "href": "https://rcsocedev-rcsmobile.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONT77D3AB5D83ED4489A6F704D4017E60A9/Medium/f220118_sm_toyfinder_nonholiday_mob_nav.jpg?format=webp&type=responsiveimage",
+                      "rel": "self",
+                      "method": "GET",
+                      "mediaType": "image/webp"
+                    }
+                  ]
+                }
+              ],
+              "type": "responsiveimage"
+            },
+            {
+              "name": "Large",
+              "formats": [
+                {
+                  "format": "jpg",
+                  "size": 23569,
+                  "mimeType": "image/jpeg",
+                  "metadata": {
+                    "width": "300",
+                    "height": "300"
+                  },
+                  "links": [
+                    {
+                      "href": "https://rcsocedev-rcsmobile.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONT77D3AB5D83ED4489A6F704D4017E60A9/Large/f220118_sm_toyfinder_nonholiday_mob_nav.jpg?format=jpg&type=responsiveimage",
+                      "rel": "self",
+                      "method": "GET",
+                      "mediaType": "image/jpeg"
+                    }
+                  ]
+                },
+                {
+                  "format": "webp",
+                  "size": 0,
+                  "mimeType": "image/webp",
+                  "metadata": {
+                    "width": "300",
+                    "height": "300"
+                  },
+                  "links": [
+                    {
+                      "href": "https://rcsocedev-rcsmobile.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONT77D3AB5D83ED4489A6F704D4017E60A9/Large/f220118_sm_toyfinder_nonholiday_mob_nav.jpg?format=webp&type=responsiveimage",
+                      "rel": "self",
+                      "method": "GET",
+                      "mediaType": "image/webp"
+                    }
+                  ]
+                }
+              ],
+              "type": "responsiveimage"
+            },
+            {
+              "name": "Small",
+              "formats": [
+                {
+                  "format": "jpg",
+                  "size": 23569,
+                  "mimeType": "image/jpeg",
+                  "metadata": {
+                    "width": "300",
+                    "height": "300"
+                  },
+                  "links": [
+                    {
+                      "href": "https://rcsocedev-rcsmobile.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONT77D3AB5D83ED4489A6F704D4017E60A9/Small/f220118_sm_toyfinder_nonholiday_mob_nav.jpg?format=jpg&type=responsiveimage",
+                      "rel": "self",
+                      "method": "GET",
+                      "mediaType": "image/jpeg"
+                    }
+                  ]
+                },
+                {
+                  "format": "webp",
+                  "size": 0,
+                  "mimeType": "image/webp",
+                  "metadata": {
+                    "width": "300",
+                    "height": "300"
+                  },
+                  "links": [
+                    {
+                      "href": "https://rcsocedev-rcsmobile.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONT77D3AB5D83ED4489A6F704D4017E60A9/Small/f220118_sm_toyfinder_nonholiday_mob_nav.jpg?format=webp&type=responsiveimage",
+                      "rel": "self",
+                      "method": "GET",
+                      "mediaType": "image/webp"
+                    }
+                  ]
+                }
+              ],
+              "type": "responsiveimage"
+            }
+          ],
+          "fileGroup": "Images",
+          "offer_type": null,
+          "fileType": "jpeg",
+          "image_type": [
+            "facebook_square",
+            "special_location_mobile",
+            "tile_square"
+          ],
+          "bank_approval": null
+        },
+        "slug": "image-1481786825276-f220118_sm_toyfinder_nonholiday_mob_nav"
+      }
+    ]
+  }
+}
