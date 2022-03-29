@@ -1,6 +1,6 @@
-const fdk=require('@fnproject/fdk');
+const fdk = require('@fnproject/fdk'); // https://github.com/fnproject/fdk-node
 
-fdk.handle(function(input){
+fdk.handle(function(input, ctx){
   let name = 'World';
   if (input.name) {
     name = input.name;
