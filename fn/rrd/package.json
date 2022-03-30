@@ -1,11 +1,17 @@
 {
 	"name": "hellofn",
-    "version": "1.0.0",
+	"version": "1.0.0",
 	"description": "example function",
 	"main": "func.js",
 	"author": "",
 	"license": "Apache-2.0",
 	"dependencies": {
-		"@fnproject/fdk": ">=0.0.34"
+		"@fnproject/fdk": ">=0.0.34",
+		"node-fetch": "^2.6.7"
+	},
+	"scripts": {
+		"deploy": "fn deploy --app ocm-webhook-shapers",
+		"invoke": "fn invoke ocm-webhook-shapers rrd",
+		"inspect": "fn inspect function ocm-webhook-shapers rrd"
 	}
 }

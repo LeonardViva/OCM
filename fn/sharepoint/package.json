@@ -1,11 +1,16 @@
 {
-	"name": "hellofn",
+	"name": "sharepoint-upload-from-ocm-webhook",
     "version": "1.0.0",
-	"description": "example function",
+	"description": "",
 	"main": "func.js",
 	"author": "",
 	"license": "Apache-2.0",
 	"dependencies": {
 		"@fnproject/fdk": ">=0.0.34"
+	},
+	"scripts": {
+		"deploy": "fn deploy --app ocm-webhook-shapers",
+		"invoke": "fn invoke ocm-webhook-shapers rrd",
+		"inspect": "fn inspect function ocm-webhook-shapers rrd"
 	}
 }
