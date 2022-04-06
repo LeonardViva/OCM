@@ -160,7 +160,7 @@ fdk.handle(async function (objInput, objContext) {
 		let input = objInput.entity.items[0]
 
 		strProgress = 'get token'
-		let strToken = await getToken()
+		const strToken = await getToken()
 		strProgress = 'got token'
 
 		strProgress = 'upload file call'
