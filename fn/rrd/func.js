@@ -47,7 +47,7 @@ const uploadFile = async (objInput, objRRD, strToken) => {
 	strBody += `Content-Type: application/json\r\n\r\n`
 	strBody += `{"parentID": "${objApplication.strParentFolderId}"}\r\n`
 	strBody += `--${strBoundary}\r\n`
-	strBody += `Content-Disposition: form-data; name="primaryFile"; filename="${objInput.filename}"\r\n`
+	strBody += `Content-Disposition: form-data; name="primaryFile"; filename="${objInput.name}"\r\n`
 	strBody += `Content-Type: text/plain\r\n\r\n`
 	strBody += `${JSON.stringify(objInput)}\r\n`
 	strBody += `--${strBoundary}--`
