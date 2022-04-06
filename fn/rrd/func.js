@@ -65,7 +65,7 @@ const uploadFile = async (objInput, objRRD, strToken) => {
 	strProgress = `71 - ${JSON.stringify(options)}`
 	// throw new Error(JSON.stringify(options))
 	let f = await fetch(`${objApplication.host}/documents/api/1.2/files/data`, options)
-	let res = await f.text()
+	let res = await f.json()
 	strProgress = `75 - ${JSON.stringify(res)}`
 	return res
 }
