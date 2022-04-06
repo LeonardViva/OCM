@@ -9,7 +9,7 @@
 		"@fnproject/fdk": ">=0.0.34"
 	},
 	"scripts": {
-		"deploy": "fn deploy --app ocm-webhook-shapers",
+		"deploy": "cp ../app-configuration.json app-configuration.json && fn deploy --app ocm-webhook-shapers && rm -f app-configuration.json",
 		"invoke": "fn invoke ocm-webhook-shapers rrd",
 		"inspect": "fn inspect function ocm-webhook-shapers rrd"
 	}
