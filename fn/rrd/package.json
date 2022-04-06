@@ -10,7 +10,7 @@
 		"node-fetch": "^2.6.7"
 	},
 	"scripts": {
-		"deploy": "fn deploy --app ocm-webhook-shapers",
+		"deploy": "cp ../app-configuration.json app-configuration.json && fn deploy --app ocm-webhook-shapers && rm -f app-configuration.json",
 		"invoke": "fn invoke ocm-webhook-shapers rrd",
 		"inspect": "fn inspect function ocm-webhook-shapers rrd"
 	}
