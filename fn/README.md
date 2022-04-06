@@ -1,6 +1,11 @@
 # emra-integrations
 
 Each folder represents a function running on Emerson's cloud account. Each function is triggered by webhooks from OCM, and manipulates or pushes the data elsewhere.
+# Setup
+
+Rename `app-configuration-template.json` to `app-configuration.json`, and update it's contents
+
+Develop each fn within it's folder. When ready to deploy, `npm run deploy`
 
 ## Steps taken to initialize this project
 ```shell

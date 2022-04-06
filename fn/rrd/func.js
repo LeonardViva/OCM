@@ -2,10 +2,9 @@ const fdk = require('@fnproject/fdk'); // https://github.com/fnproject/fdk-node
 const fs = require('fs')
 const fetch = require('node-fetch');
 
+const objApplication = JSON.parse(fs.readFileSync('/function/app-configuration.json', 'utf-8'))
+
 let strProgress
-let objApplication
-
-
 
 const getToken = async () => {
 	// https://rcsocedev-rcsmobile.cec.ocp.oraclecloud.com/documents/web?IdcService=GET_OAUTH_TOKEN
@@ -74,8 +73,6 @@ const uploadFile = async (objInput, objRRD, strToken) => {
 fdk.handle(async function (objInput, objContext) {
 	// TODO loop through objInput.items, perform shaping and upload per item
 	try {
-		strProgress = 'test'
-		objApplication = JSON.parse(fs.readFileSync('./app-configuration.json', 'utf-8'))
 		strProgress = `found objapplication - ${JSON.stringify(objApplication)}`
 		const objRRD = {
 			"PushNotificationPdfDocument": {
