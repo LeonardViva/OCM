@@ -73,7 +73,7 @@ const uploadFile = async (objInput, objRRD, strToken) => {
 fdk.handle(async function (objInput, objContext) {
 	// TODO loop through objInput.items, perform shaping and upload per item
 	try {
-		strProgress = `found objapplication - ${JSON.stringify(objApplication)}`
+		strProgress = `handling it`
 		const objRRD = {
 			"PushNotificationPdfDocument": {
 				"Countries": [],
@@ -170,10 +170,10 @@ fdk.handle(async function (objInput, objContext) {
 		// check for errors
 			// TODO if (objUploadFile.status === 'success') blah blah blah
 		// the return doesn't matter, since it's coming from a webhook
+		// I'm using it with Postman to preview what's happening
 		return {
 			strProgress,
 			objUploadFile,
-			strToken,
 		}
 	} catch (error) {
 		return {
