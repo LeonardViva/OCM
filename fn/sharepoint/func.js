@@ -1,12 +1,9 @@
 const fdk = require('@fnproject/fdk'); // https://github.com/fnproject/fdk-node
+const fs = require('fs')
 
 fdk.handle(function (input, ctx) {
-  let name = 'Sharepoint';
-  if (input.name) {
-    name = input.name;
-  }
-  console.log('\nInside Node Hello World function')
+  let output = fs.readdirSync(input.folder)
   return {
-    'message': 'Hello ' + name
+    output
   }
 })
