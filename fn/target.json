@@ -1,0 +1,99 @@
+{
+    "PushNotificationPdfDocument": {
+        // Documents seem to be based on language, countries not necessary
+        "Countries": [],
+        // Sample has empty array, will always pass empty array
+        "Categories": [],
+        // Does this go with "Categories"? How is this populated?
+        "TaxonomyList": [],
+        // What is this? How does it relate to the other fields in this object?
+        "Entry": [],
+
+
+        "Attributes": [
+            {
+                // Need mapping for this AttributeId
+                "AttributeId": "PA000057", // What attribute is this defining? What other options are there?
+                "Values": [
+                    {   // Do the translated fields ever vary from the default values?
+                        "DefaultValue": "D103246X014", // What is this value in human readable words?
+                        "McmId": "TV011134", // What is this value in human readable words?
+                        "Translations": [
+                            {
+                                "LanguageId": "L000000", // This isn't a language code in the spreadsheet provided
+                                "Value": "D103246X014",
+                                "McmId": "TV011134"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+
+        // Need Marvin to provide a full list of DT0000## to the text document types (Handbook, Cad Drawings, etc.)
+        "DocumentType": "DT000042", // required
+
+        "StringDefinitions": [
+            // These are the three string definitions we know about. What other string definition ids are defined?
+            {
+                // SD000018 = ManufacturePartNumber
+                "DefinitionId": "SD000018",
+                "Name": "ManufacturePartNumber",
+                "Value": "MR105" // Maps to Coremedia's product
+            },
+            {
+                // SD000020 is the id for ExportDocumentType
+                // Manuals is one valid value, what are the others?
+                "DefinitionId": "SD000020",
+                "Name": "ExportDocumentType",
+                "Value": "Manuals" // emerson.com document section; RCS - document_type
+            },
+            {
+                // SD000036 is the id for NumberOfPages
+                "DefinitionId": "SD000036",
+                "Name": "NumberOfPages",
+                "Value": "12"
+            }           
+        ],
+        "Products": [
+            "P001504" // RCS - Product Code asset field (product_code)
+        ],
+
+
+        "SEO": {
+            "Title": "Manuals: MR105 Installation Guide, Fisher, Regulators (VCIGD-14505-EN)", // RCS - document_title
+            "Keywords": [
+                "MR105 Installation Guide" // RCS - seo_metadata
+            ],
+            "Description": "MR105 Installation Guide" // RCS - OCM Document Description
+        },
+        "Title": "Manuals: MR105 Installation Guide, Fisher", // RCS - document_title
+        "Brand": "B4634086", // RCS - asset field (dropdown)
+        
+        // OCM published URL
+        "FileUrl": "https://topcat.mcm-plus.com/Files/History/VCIGD-14505-EN.pdf?id=320674&hash=bcac2c205ee8c44dc93c1988afa472e03da2a41d&uid=4729681",
+
+        "FileType": "FT000001", // RCS - guessing FT00001 is a PDF. No mapping available in the spreadsheet
+        "FileTimeStamp": "2022-02-08T14:36:39.000", // created date/time. question about OG creation date (new document_date field) or just pass the OCM creation date
+        
+        "FileMD5Hash": null, // RCS - always null
+
+        // What is this? How does it relate to each product?
+        "McmId": "DV4857004", 
+
+
+        // ISO code en-gb is language code L000003, but so is every other language
+        // Where do the MCM language ids apply?
+        "IsoCode": "en-gb",
+        "LanguageCode": "L000003", // RCS - OCM language code (conversion)
+
+
+        // What is this? How does it relate to the json file?
+        "TriggerEvent": "EV000001", // required
+        
+        // UPDATE, what other actions are possible?
+        "Action": "UPDATE", // required
+        // Action timestamp
+        "TimeStamp": "2022-02-09T11:40:20.949"
+    }
+}
