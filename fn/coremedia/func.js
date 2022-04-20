@@ -3,7 +3,7 @@ const fdk = require('@fnproject/fdk'); // https://github.com/fnproject/fdk-node
 const translateLanguageCode = function(strLanguageCode) {
   // what are all of there Language codes?
   const dicLanguageList = {
-    'en-US': {LanguageCode: 'L000003', }
+    'en-US': {languageCode: 'L000003', isoCode: 'en-gb'}
   }
   return dicLanguageList[strLanguageCode];
 }
@@ -17,142 +17,84 @@ fdk.handle(function(oceData, ctx){
 
   arPublishedItems.map(publishedItem => {
     objCoremediaData = {
-      // Title: publishedItem., Where should this come from
-      FileName: publishedItem.name, 
-      LanguageCode: translateLanguageCode(publishedItem.language),
-      Products: publishedItem.Products,
       PushNotificationPdfDocument: {
-        // "Countries": [],
-        // "Categories": [],
-        Attributes: [
-            {
-                // "AttributeId": "PA000057",
-                Values: [
-                    {
-                        // "DefaultValue": "D103246X014",
-                        // "McmId": "TV011134",
-                        Translations: [
-                            {
-                                LanguageId: "L000000", // required 
-                                // "Value": "D103246X014",
-                                // "McmId": "TV011134"
-                            }
-                        ]
-                    }
-                ]
-            }
+        "Countries": [],
+        "Categories": [],
+        "TaxonomyList": [],
+        "Entry": [],
+        // Need to fill out bdog
+        "Attributes": [
+          {
+              // Need mapping for this AttributeId
+              "AttributeId": "PA000057", // What attribute is this defining? What other options are there?
+              "Values": [
+                  {   // Do the translated fields ever vary from the default values?
+                      "DefaultValue": "D103246X014", // What is this value in human readable words?
+                      "McmId": "TV011134", // What is this value in human readable words?
+                      "Translations": [
+                          {
+                              "LanguageId": "L000000", // This isn't a language code in the spreadsheet provided
+                              "Value": "D103246X014",
+                              "McmId": "TV011134"
+                          }
+                      ]
+                  }
+              ]
+          }
         ],
-        StringDefinitions: [
-            {
-                // "DefinitionId": "SD000018",
-                // "Name": "ManufacturePartNumber",
-                Value: "MR105" // required for coremedia product relation
-            },
-            {
-                // "DefinitionId": "SD000020",
-                // "Name": "ExportDocumentType",
-                Value: "Manuals" // required for coremedia document type; OCM asset type
-            }
+        // Need to fill out bdog
+        "StringDefinitions": [
+          // These are the three string definitions we know about. What other string definition ids are defined?
+          {
+              // SD000018 = ManufacturePartNumber
+              "DefinitionId": "SD000018",
+              "Name": "ManufacturePartNumber",
+              "Value": "MR105" // Maps to Coremedia's product
+          },
+          {
+              // SD000020 is the id for ExportDocumentType
+              // Manuals is one valid value, what are the others?
+              "DefinitionId": "SD000020",
+              "Name": "ExportDocumentType",
+              "Value": "Manuals" // emerson.com document section; RCS - document_type
+          },
+          {
+              // SD000036 is the id for NumberOfPages
+              "DefinitionId": "SD000036",
+              "Name": "NumberOfPages",
+              "Value": "12"
+          }           
         ],
-        Products: [
-            "P001504"
-        ],
-        // "TaxonomyList": [],
-        // "Entry": [],
+        "DocumentType": "",// Replace with the correct Doc type when marvin gives updates
+        "Products": publishedItem.Products,
         "SEO": {
-            "Title": "Manuals: MR105 Installation Guide, Fisher, Regulators (VCIGD-14505-EN)", // required
-            "Keywords": [
-                "MR105 Installation Guide" // required
-            ],
-            "Description": "MR105 Installation Guide"
+          "Title": publishedItem.fields.document_title, // RCS - document_title
+          "Keywords": publishedItem.fields.keywords, // RCS - seo_metadata
+          "Description": publishedItem.description // RCS - OCM Document Description
         },
-        "Identifier": "VCIGD-14505-EN", // optional for reference
-        "FileName": "VCIGD-14505-EN.pdf", // optional for reference
-        "Title": "Manuals: MR105 Installation Guide, Fisher", // required
-        "LanguageCode": "L000003", // required
-        "Brand": "B4634086", // required for storing in specific folder in coremedia
-        "FileUrl": "https://topcat.mcm-plus.com/Files/History/VCIGD-14505-EN.pdf?id=320674&hash=bcac2c205ee8c44dc93c1988afa472e03da2a41d&uid=4729681", // required
-        "FileType": "FT000001",
-        "FileTimeStamp": "2022-02-08T14:36:39.000",
-        "FileMD5Hash": null,
-        "DocumentType": "DT000042", // required
+        "Title": publishedItem.fields.document_title, // RCS - document_title
+        "Brand": publishedItem.fields.brandCode, // RCS - asset field (dropdown)
+        // OCM published URL // this is the native resolution, not sure if pdfs have a different structure
+        "FileUrl": publishedItem.native.href,
+        "FileType": "", // RCS - guessing FT00001 is a PDF. No mapping available in the spreadsheet
+        // for now just passing the oce date
+        "FileTimeStamp": publishedItem.createdDate.value, // created date/time. question about OG creation date (new document_date field) or just pass the OCM creation date
+        "FileMD5Hash": null, // RCS - always null
+        // What is this? How does it relate to each product? HArd coded for now BDOG
         "McmId": "DV4857004", 
-        "IsoCode": "en-gb", // required
+        // ISO code en-gb is language code L000003, but so is every other language
+        // Where do the MCM language ids apply?
+        "IsoCode": translateLanguageCode(publishedItem.language).isoCode,
+        "LanguageCode": translateLanguageCode(publishedItem.language).languageCode, // RCS - OCM language code (conversion)
+        // What is this? How does it relate to the json file? Hard coded for now BDOG
         "TriggerEvent": "EV000001", // required
-        "TimeStamp": "2022-02-09T11:40:20.949",
-        "Action": "UPDATE" // required
+        // UPDATE, what other actions are possible? For now set to update always
+        "Action": "UPDATE", // required
+        // Action timestamp
+        "TimeStamp": publishedItem.refresh_date.value,
       }
     }
   }); 
   console.log('\nInside Node shaping function')
   return objCoreMediaData;
 })
-
-// OCE Fields:
-// "name": "f220118_sm_toyfinder_nonholiday_mob_nav.jpg",
-// "repositoryId": "810903DB893B4C3DA6D885534D6BF73B",
-// "description": "",
-// "language": "en-US",
-
-
-// EMERSON FIELDS
-
-// "PushNotificationPdfDocument": {
-//   "Attributes": [
-//       {
-//           "AttributeId": "PA000057",
-//           "Values": [
-//               {
-//                   "DefaultValue": "D103246X014",
-//                   "McmId": "TV011134",
-//                   "Translations": [
-//                       {
-//                           "LanguageId": "L000000", // required 
-//                           "Value": "D103246X014",
-//                           "McmId": "TV011134"
-//                       }
-//                   ]
-//               }
-//           ]
-//       }
-//   ],
-//   "StringDefinitions": [
-//       {
-//           "DefinitionId": "SD000018",
-//           "Name": "ManufacturePartNumber",
-//           "Value": "MR105" // required for coremedia product relation
-//       },
-//       {
-//           "DefinitionId": "SD000020",
-//           "Name": "ExportDocumentType",
-//           "Value": "Manuals" // required for coremedia document type; OCM asset type
-//       }
-//   ],
-//   "Products": [
-//       "P001504"
-//   ],
-//   "TaxonomyList": [],
-//   "Entry": [],
-//   "SEO": {
-//       "Title": "Manuals: MR105 Installation Guide, Fisher, Regulators (VCIGD-14505-EN)", // required
-//       "Keywords": [
-//           "MR105 Installation Guide" // required
-//       ],
-//       "Description": "MR105 Installation Guide"
-//   },
-//   "Identifier": "VCIGD-14505-EN", // optional for reference
-//   "FileName": "VCIGD-14505-EN.pdf", // optional for reference
-//   "Title": "Manuals: MR105 Installation Guide, Fisher", // required
-//   "LanguageCode": "L000003", // required
-//   "Brand": "B4634086", // required for storing in specific folder in coremedia
-//   "FileUrl": "https://topcat.mcm-plus.com/Files/History/VCIGD-14505-EN.pdf?id=320674&hash=bcac2c205ee8c44dc93c1988afa472e03da2a41d&uid=4729681", // required
-//   "FileType": "FT000001",
-//   "FileTimeStamp": "2022-02-08T14:36:39.000",
-//   "FileMD5Hash": null,
-//   "DocumentType": "DT000042", // required
-//   "McmId": "DV4857004", 
-//   "IsoCode": "en-gb", // required
-//   "TriggerEvent": "EV000001", // required
-//   "TimeStamp": "2022-02-09T11:40:20.949",
-//   "Action": "UPDATE" // required
-// }
