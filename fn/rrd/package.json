@@ -1,16 +1,17 @@
 {
-	"name": "hellofn",
+	"name": "rrd",
 	"version": "1.0.0",
-	"description": "example function",
+	"description": "Post OCM files to RRD",
 	"main": "func.js",
 	"author": "",
 	"license": "Apache-2.0",
 	"dependencies": {
 		"@fnproject/fdk": ">=0.0.34",
-		"node-fetch": "^2.6.7"
+		"node-fetch": "^2.6.7",
+		"modern-async": "^1.1.2"
 	},
 	"scripts": {
-		"deploy": "cp ../app-configuration.json app-configuration.json && fn deploy --app ocm-webhook-shapers && rm -f app-configuration.json",
+		"deploy": "fn deploy --app ocm-webhook-shapers",
 		"invoke": "fn invoke ocm-webhook-shapers rrd",
 		"inspect": "fn inspect function ocm-webhook-shapers rrd"
 	}
