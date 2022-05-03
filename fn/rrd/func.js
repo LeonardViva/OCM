@@ -42,7 +42,7 @@ fdk.handle(
 						"Identifier": objItem.fields.document_number,
 						// Asset name
 						"FileName": objItem.name,
-						// published asset url
+						// Published asset url
 						"FileUrl": objItem.fields.native.links[0].href
 					}
 				}
