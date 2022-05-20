@@ -8,6 +8,10 @@ const {	forEachSeries } = require('modern-async')
 // Globally scope our configuration
 let objApplication = {}
 
+var replaceAll = function (replaceThis, withThis, inThis) {
+    withThis = withThis.replace(/\$/g,"$$$$");
+    return inThis.replace(new RegExp(replaceThis.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|<>\-\&])/g,"\\$&"),"g"), withThis);
+};
 
 fdk.handle(
 	/**
