@@ -8,7 +8,7 @@ const {	forEachSeries } = require('modern-async')
 // Globally scope our configuration
 let objApplication = {}
 
-var replaceAll = function (replaceThis, withThis, inThis) {
+const replaceAll = (replaceThis, withThis, inThis) => {
     withThis = withThis.replace(/\$/g,"$$$$");
     return inThis.replace(new RegExp(replaceThis.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|<>\-\&])/g,"\\$&"),"g"), withThis);
 };
@@ -39,6 +39,8 @@ fdk.handle(
 			 * @param {object} objItem OCM document that has been published
 			 */
 			async (objItem) => {
+				let strPrefix = `<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/"><soap:Header/><soap:Body><tem:PostFile><tem:jsonString>`
+				let strSuffix = `</tem:jsonString></tem:PostFile></soap:Body></soap:Envelope>`
 				// Shape data
 				let objPayload = {
 					"PushNotificationPdfDocument": {
@@ -50,83 +52,25 @@ fdk.handle(
 						"FileUrl": objItem.fields.native.links[0].href
 					}
 				}
-
+				objPayload = replaceAll('"', '&quot;', JSON.stringify(objPayload))
+				let body = `${strPrefix}${objPayload}${strSuffix}`
 				// @ts-expect-error
 				// Send request to the functions context item for RRD's endpoint
 				let reqPost = await fetch(objContext._config.RRD_endpoint, {
+					method: 'post',
 					headers: {
-						method: 'POST',
-						body: objPayload
-					}
+						'Content-Type': 'application/soap+xml;charset=UTF-8;action="http://tempuri.org/PostFile"',
+					},
+					body: body
 				})
 				// Response is XML, which fetch doesn't natively support
 				let resPost = await reqPost.text()
-				objPayload.status = resPost
-				// Push to our output array so we can return the response
-				arOutput.push(objPayload)
+				let status = reqPost.status
+				if (reqPost.status == 200 && resPost.indexOf('<PostFileResult>&lt;Response&gt;OK&lt;/Response&gt;</PostFileResult>') > 0) {
+					status = 'success'
+				}
+				arOutput.push({resPost, status})
 			})
-		return {
-			arOutput
-		}
+		return {arOutput}
+		
 	})
-
-/**
- * This function uses the function configuration variables to obtain an oAuth token for OCM
- * Unused as of 2022-05-03
- * @returns string
- */
-const getToken = async () => {
-	// https://rcsocedev-rcsmobile.cec.ocp.oraclecloud.com/documents/web?IdcService=GET_OAUTH_TOKEN
-	let strCredentialsEncoded = Buffer.from(`${objApplication.clientID}:${objApplication.clientSecret}`).toString('base64')
-	let params = new URLSearchParams()
-	params.append('grant_type', 'client_credentials')
-	params.append('scope', objApplication.scope)
-	let options = {
-		method: 'post',
-		headers: {
-			'Authorization': `Basic ${strCredentialsEncoded}`,
-			'Content-Type': 'application/x-www-form-urlencoded'
-		},
-		body: params
-	}
-	// @ts-expect-error
-	let reqToken = await fetch(`${objApplication.idcsURL}/oauth2/v1/token`, options)
-	let resToken = await reqToken.json()
-	return resToken.access_token
-}
-
-/**
- * 
- * @param {object} objInput Object representing the file to upload
- * @param {string} strToken oAuth token for access to OCM Documents
- * @returns Promise<object> Object representing the OCM file
- */
-const uploadFile = async (objInput, strToken) => {
-	objInput.name += '.json'
-	let strBoundary = "7dc7c172076a"
-	let strBody = ""
-	strBody += `--${strBoundary}\r\n`
-	strBody += `Content-Disposition: form-data; name="jsonInputParameters"\r\n`
-	strBody += `Content-Type: application/json\r\n\r\n`
-	strBody += `{"parentID": "${objApplication.strParentFolderId}"}\r\n`
-	strBody += `--${strBoundary}\r\n`
-	strBody += `Content-Disposition: form-data; name="primaryFile"; filename="${objInput.name}"\r\n`
-	strBody += `Content-Type: text/plain\r\n\r\n`
-	strBody += `${JSON.stringify(objInput)}\r\n`
-	strBody += `--${strBoundary}--`
-	//set basic 'form' headers
-	let options = {
-		method: 'POST',
-		body: strBody,
-		headers: {
-			"Content-Type": `multipart/form-data; boundary=${strBoundary}`,
-			charset: 'utf-8',
-			'X-Requested-With': 'XMLHttpRequest',
-			'Authorization': `Bearer ${strToken}`
-		}
-	}
-	// @ts-expect-error
-	let req = await fetch(`${objApplication.host}/documents/api/1.2/files/data`, options)
-	let res = await req.json()
-	return res
-}

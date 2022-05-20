@@ -1,6 +1,6 @@
 schema_version: 20180708
 name: rrd
-version: 0.0.11
+version: 1.0.0
 runtime: node
 build_image: fnproject/node:14-dev
 run_image: fnproject/node:14
