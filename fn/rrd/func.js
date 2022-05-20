@@ -21,7 +21,10 @@ fdk.handle(
 	 * @returns Promise<object> Object containing an array of the POST status responses
 	 */
 	async (objInput, objContext) => {
+		// Be ready to return some data
 		let arOutput = []
+
+		// Prep the application context variables
 		objApplication = {
 			"clientID": objContext._config.clientID,
 			"clientSecret": objContext._config.clientSecret,
@@ -39,6 +42,7 @@ fdk.handle(
 			 * @param {object} objItem OCM document that has been published
 			 */
 			async (objItem) => {
+				// SOAP prefix/suffix around the payload data
 				let strPrefix = `<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/"><soap:Header/><soap:Body><tem:PostFile><tem:jsonString>`
 				let strSuffix = `</tem:jsonString></tem:PostFile></soap:Body></soap:Envelope>`
 				// Shape data
@@ -53,6 +57,7 @@ fdk.handle(
 					}
 				}
 				objPayload = replaceAll('"', '&quot;', JSON.stringify(objPayload))
+				// Build our body
 				let body = `${strPrefix}${objPayload}${strSuffix}`
 				// @ts-expect-error
 				// Send request to the functions context item for RRD's endpoint
