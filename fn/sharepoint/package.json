@@ -1,16 +1,18 @@
 {
 	"name": "sharepoint-upload-from-ocm-webhook",
-    "version": "1.0.0",
+	"version": "1.0.0",
 	"description": "",
 	"main": "func.js",
 	"author": "",
 	"license": "Apache-2.0",
 	"dependencies": {
-		"@fnproject/fdk": ">=0.0.34"
+		"@fnproject/fdk": ">=0.0.34",
+		"node-fetch": "^2.6.7",
+		"modern-async": "^1.1.2"
 	},
 	"scripts": {
-		"deploy": "cp ../app-configuration.json app-configuration.json && fn deploy --app ocm-webhook-shapers && rm -f app-configuration.json",
-		"invoke": "fn invoke ocm-webhook-shapers rrd",
-		"inspect": "fn inspect function ocm-webhook-shapers rrd"
+		"deploy": "fn deploy --app ocm-webhook-shapers",
+		"invoke": "fn invoke ocm-webhook-shapers sharepoint",
+		"inspect": "fn inspect function ocm-webhook-shapers sharepoint"
 	}
 }
