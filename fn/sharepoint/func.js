@@ -15,119 +15,120 @@ fdk.handle(
 	 */
 	async (objInput, objContext) => {
     
-    objInput = {
-            "webhook": {
-                "id": 2001,
-                "name": "Sharepoint"
-            },
-            "event": {
-                "id": "4d9edbed-be35-4fcf-b20a-910093e2a628",
-                "name": "CHANNEL_ASSETPUBLISHED",
-                "registeredAt": "2022-05-23T22:27:05.646Z",
-                "initiatedBy": "bcoats@redstonecontentsolutions.com"
-            },
-            "entity": {
-                "id": "RCHANNEL24E15FC9CB894875A3AAA1500C95B3AC",
-                "name": "Sharepoint",
-                "items": [
-                    {
-                        "translatable": false,
-                        "description": "",
-                        "language": "en-US",
-                        "updatedDate": {
-                            "value": "2022-05-23T22:27:01.449Z",
-                            "timezone": "UTC"
-                        },
-                        "type": "File",
-                        "createdDate": {
-                            "value": "2022-04-18T13:54:57.726Z",
-                            "timezone": "UTC"
-                        },
-                        "fileExtension": "pdf",
-                        "name": "Northeast Controls_QT BFV & BV_From Contracts - (VC000-06793-EN).pdf",
-                        "repositoryId": "2A13710F0E3C401DA0DB716A711F88F3",
-                        "links": [
-                            {
-                                "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/CONTA3866F34FEB3421F9877FABE836C1FDF",
-                                "rel": "self",
-                                "method": "GET",
-                                "mediaType": "application/json"
-                            }
-                        ],
-                        "id": "CONTA3866F34FEB3421F9877FABE836C1FDF",
-                        "fields": {
-                            "metadata": {
-                                "width": "-1",
-                                "height": "-1"
-                            },
-                            "size": 101221,
-                            "native": {
-                                "links": [
-                                    {
-                                        "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONTA3866F34FEB3421F9877FABE836C1FDF/native/Northeast+Controls_QT+BFV+%26amp%3B+BV_From+Contracts+-+%28VC000-06793-EN%29.pdf",
-                                        "rel": "self",
-                                        "method": "GET",
-                                        "mediaType": "application/pdf"
-                                    }
-                                ]
-                            },
-                            "renditions": [
-                                {
-                                    "name": "Thumbnail",
-                                    "formats": [
-                                        {
-                                            "format": "jpg",
-                                            "size": 0,
-                                            "mimeType": "image/jpeg",
-                                            "metadata": {
-                                                "width": "0",
-                                                "height": "0"
-                                            },
-                                            "links": [
-                                                {
-                                                    "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONTA3866F34FEB3421F9877FABE836C1FDF/Thumbnail/Northeast+Controls_QT+BFV+%26amp%3B+BV_From+Contracts+-+%28VC000-06793-EN%29.pdf?format=jpg&type=responsiveimage",
-                                                    "rel": "self",
-                                                    "method": "GET",
-                                                    "mediaType": "image/jpeg"
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    "type": "responsiveimage"
-                                },
-                                {
-                                    "name": "Small",
-                                    "formats": [
-                                        {
-                                            "format": "jpg",
-                                            "size": 0,
-                                            "mimeType": "image/jpeg",
-                                            "metadata": {
-                                                "width": "0",
-                                                "height": "0"
-                                            },
-                                            "links": [
-                                                {
-                                                    "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONTA3866F34FEB3421F9877FABE836C1FDF/Small/Northeast+Controls_QT+BFV+%26amp%3B+BV_From+Contracts+-+%28VC000-06793-EN%29.pdf?format=jpg&type=responsiveimage",
-                                                    "rel": "self",
-                                                    "method": "GET",
-                                                    "mediaType": "image/jpeg"
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    "type": "responsiveimage"
-                                }
-                            ],
-                            "mimeType": "application/pdf",
-                            "fileGroup": "Documents",
-                            "fileType": "pdf"
-                        },
-                        "slug": "file-1481786109679-northeast-controls_qt-bfv--amp--bv_from-contracts---(vc000-06793-en)"
-                    }
-                ]
-            }
-        };
+    // Test Data, Uncomment and run deploy and invoke to get output 
+    // objInput = {
+    //         "webhook": {
+    //             "id": 2001,
+    //             "name": "Sharepoint"
+    //         },
+    //         "event": {
+    //             "id": "4d9edbed-be35-4fcf-b20a-910093e2a628",
+    //             "name": "CHANNEL_ASSETPUBLISHED",
+    //             "registeredAt": "2022-05-23T22:27:05.646Z",
+    //             "initiatedBy": "bcoats@redstonecontentsolutions.com"
+    //         },
+    //         "entity": {
+    //             "id": "RCHANNEL24E15FC9CB894875A3AAA1500C95B3AC",
+    //             "name": "Sharepoint",
+    //             "items": [
+    //                 {
+    //                     "translatable": false,
+    //                     "description": "",
+    //                     "language": "en-US",
+    //                     "updatedDate": {
+    //                         "value": "2022-05-23T22:27:01.449Z",
+    //                         "timezone": "UTC"
+    //                     },
+    //                     "type": "File",
+    //                     "createdDate": {
+    //                         "value": "2022-04-18T13:54:57.726Z",
+    //                         "timezone": "UTC"
+    //                     },
+    //                     "fileExtension": "pdf",
+    //                     "name": "Northeast Controls_QT BFV & BV_From Contracts - (VC000-06793-EN).pdf",
+    //                     "repositoryId": "2A13710F0E3C401DA0DB716A711F88F3",
+    //                     "links": [
+    //                         {
+    //                             "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/CONTA3866F34FEB3421F9877FABE836C1FDF",
+    //                             "rel": "self",
+    //                             "method": "GET",
+    //                             "mediaType": "application/json"
+    //                         }
+    //                     ],
+    //                     "id": "CONTA3866F34FEB3421F9877FABE836C1FDF",
+    //                     "fields": {
+    //                         "metadata": {
+    //                             "width": "-1",
+    //                             "height": "-1"
+    //                         },
+    //                         "size": 101221,
+    //                         "native": {
+    //                             "links": [
+    //                                 {
+    //                                     "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONTA3866F34FEB3421F9877FABE836C1FDF/native/Northeast+Controls_QT+BFV+%26amp%3B+BV_From+Contracts+-+%28VC000-06793-EN%29.pdf",
+    //                                     "rel": "self",
+    //                                     "method": "GET",
+    //                                     "mediaType": "application/pdf"
+    //                                 }
+    //                             ]
+    //                         },
+    //                         "renditions": [
+    //                             {
+    //                                 "name": "Thumbnail",
+    //                                 "formats": [
+    //                                     {
+    //                                         "format": "jpg",
+    //                                         "size": 0,
+    //                                         "mimeType": "image/jpeg",
+    //                                         "metadata": {
+    //                                             "width": "0",
+    //                                             "height": "0"
+    //                                         },
+    //                                         "links": [
+    //                                             {
+    //                                                 "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONTA3866F34FEB3421F9877FABE836C1FDF/Thumbnail/Northeast+Controls_QT+BFV+%26amp%3B+BV_From+Contracts+-+%28VC000-06793-EN%29.pdf?format=jpg&type=responsiveimage",
+    //                                                 "rel": "self",
+    //                                                 "method": "GET",
+    //                                                 "mediaType": "image/jpeg"
+    //                                             }
+    //                                         ]
+    //                                     }
+    //                                 ],
+    //                                 "type": "responsiveimage"
+    //                             },
+    //                             {
+    //                                 "name": "Small",
+    //                                 "formats": [
+    //                                     {
+    //                                         "format": "jpg",
+    //                                         "size": 0,
+    //                                         "mimeType": "image/jpeg",
+    //                                         "metadata": {
+    //                                             "width": "0",
+    //                                             "height": "0"
+    //                                         },
+    //                                         "links": [
+    //                                             {
+    //                                                 "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONTA3866F34FEB3421F9877FABE836C1FDF/Small/Northeast+Controls_QT+BFV+%26amp%3B+BV_From+Contracts+-+%28VC000-06793-EN%29.pdf?format=jpg&type=responsiveimage",
+    //                                                 "rel": "self",
+    //                                                 "method": "GET",
+    //                                                 "mediaType": "image/jpeg"
+    //                                             }
+    //                                         ]
+    //                                     }
+    //                                 ],
+    //                                 "type": "responsiveimage"
+    //                             }
+    //                         ],
+    //                         "mimeType": "application/pdf",
+    //                         "fileGroup": "Documents",
+    //                         "fileType": "pdf"
+    //                     },
+    //                     "slug": "file-1481786109679-northeast-controls_qt-bfv--amp--bv_from-contracts---(vc000-06793-en)"
+    //                 }
+    //             ]
+    //         }
+    //     };
 		let arOutput = []
 		const objApplication = {
 			"clientID": objContext._config.clientID,
@@ -182,10 +183,12 @@ fdk.handle(
         }
       }
       // @ts-expect-error
+      // Retrieve the categories path, this is the structure of the taxonomy
       // /content/management/api/v1.1/taxonomies/A3EC1D2F978646A9A7C5EFD003B5535C/categories/346E4123282B445E9A980DC8DFD2B976?q=(status%20eq%20%22draft%22)&fields=idPath,namePath
       let req = await fetch(`${objApplication.host}/content/management/api/v1.1/taxonomies/${objApplication.taxonomyRootId}/categories/${strCategoryId}?fields=idPath,namePath`, options)
       let res = await req.json()
       // /Distribution/Location/World Area/Asia/Hong Kong
+      // Break up the returned request to pull off the path information
       let arPathPieces = res.namePath.split('/');
       arPathPieces = [arPathPieces[1], arPathPieces.slice(2).join('/')];
       return arPathPieces;
@@ -199,10 +202,12 @@ fdk.handle(
     await forEachSeries(arPublishedItems, async (objItem) => {
       const objAssetTaxonomy = await getTaxonomyForAsset(objItem, strToken);
       try {
+        // Iterate over each of found categories and apply their column data
         await forEachSeries(objAssetTaxonomy.data[0].categories, async (category) => {
           const arPathPieces = await getCategoryPath(category.id, strToken);
           const strColumnName = arPathPieces[0];
           const strColumnData = arPathPieces[1];
+          // Sort the column data into a dictionary
           if (objColumns[strColumnName]) {
             objColumns[strColumnName].push(strColumnData);
           } else {
@@ -212,6 +217,7 @@ fdk.handle(
       } catch (e) {
         console.error('Unable to retrieve taxonomy Shape:', e);
       }
+      // Apply Column data
       objItem.columns = objColumns;
       arOutput.push(objItem);
     });
@@ -221,6 +227,7 @@ fdk.handle(
 		}
 })
 // Early Sharepoint connection investigation
+// https://github.com/Ramakrishnan-1/Upload-Files-to-Document-Library-using-SharePoint-RESTAPI/blob/main/UploadDoc.js
 // const strSharepointUrl = '';
 // fdk.handle(
 //   async (objInput, objContext) => {
