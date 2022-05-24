@@ -16,118 +16,118 @@ fdk.handle(
 	async (objInput, objContext) => {
     
     objInput = {
-      "webhook": {
-          "id": 2001,
-          "name": "Sharepoint"
-      },
-      "event": {
-          "id": "82f6541e-0a87-47ac-a96d-3d127e3e409d",
-          "name": "CHANNEL_ASSETPUBLISHED",
-          "registeredAt": "2022-05-23T17:34:00.107Z",
-          "initiatedBy": "bcoats@redstonecontentsolutions.com"
-      },
-      "entity": {
-          "id": "RCHANNEL24E15FC9CB894875A3AAA1500C95B3AC",
-          "name": "Sharepoint",
-          "items": [
-              {
-                  "translatable": false,
-                  "description": "",
-                  "language": "en-US",
-                  "updatedDate": {
-                      "value": "2022-05-23T17:33:54.499Z",
-                      "timezone": "UTC"
-                  },
-                  "type": "File",
-                  "createdDate": {
-                      "value": "2022-04-18T13:54:57.106Z",
-                      "timezone": "UTC"
-                  },
-                  "fileExtension": "pdf",
-                  "name": "Northeast Controls_Knife Gates_From Contracts - (VC000-06789-EN).pdf",
-                  "repositoryId": "2A13710F0E3C401DA0DB716A711F88F3",
-                  "links": [
-                      {
-                          "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/CONT2C0F3568A29A4B6389DC4851771601F6",
-                          "rel": "self",
-                          "method": "GET",
-                          "mediaType": "application/json"
-                      }
-                  ],
-                  "id": "CONT2C0F3568A29A4B6389DC4851771601F6",
-                  "fields": {
-                      "metadata": {
-                          "width": "-1",
-                          "height": "-1"
-                      },
-                      "size": 99113,
-                      "native": {
-                          "links": [
-                              {
-                                  "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONT2C0F3568A29A4B6389DC4851771601F6/native/Northeast+Controls_Knife+Gates_From+Contracts+-+%28VC000-06789-EN%29.pdf",
-                                  "rel": "self",
-                                  "method": "GET",
-                                  "mediaType": "application/pdf"
-                              }
-                          ]
-                      },
-                      "renditions": [
-                          {
-                              "name": "Thumbnail",
-                              "formats": [
-                                  {
-                                      "format": "jpg",
-                                      "size": 0,
-                                      "mimeType": "image/jpeg",
-                                      "metadata": {
-                                          "width": "0",
-                                          "height": "0"
-                                      },
-                                      "links": [
-                                          {
-                                              "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONT2C0F3568A29A4B6389DC4851771601F6/Thumbnail/Northeast+Controls_Knife+Gates_From+Contracts+-+%28VC000-06789-EN%29.pdf?format=jpg&type=responsiveimage",
-                                              "rel": "self",
-                                              "method": "GET",
-                                              "mediaType": "image/jpeg"
-                                          }
-                                      ]
-                                  }
-                              ],
-                              "type": "responsiveimage"
-                          },
-                          {
-                              "name": "Small",
-                              "formats": [
-                                  {
-                                      "format": "jpg",
-                                      "size": 0,
-                                      "mimeType": "image/jpeg",
-                                      "metadata": {
-                                          "width": "0",
-                                          "height": "0"
-                                      },
-                                      "links": [
-                                          {
-                                              "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONT2C0F3568A29A4B6389DC4851771601F6/Small/Northeast+Controls_Knife+Gates_From+Contracts+-+%28VC000-06789-EN%29.pdf?format=jpg&type=responsiveimage",
-                                              "rel": "self",
-                                              "method": "GET",
-                                              "mediaType": "image/jpeg"
-                                          }
-                                      ]
-                                  }
-                              ],
-                              "type": "responsiveimage"
-                          }
-                      ],
-                      "mimeType": "application/pdf",
-                      "fileGroup": "Documents",
-                      "fileType": "pdf"
-                  },
-                  "slug": "file-1481786109668-northeast-controls_knife-gates_from-contracts---(vc000-06789-en)"
-              }
-          ]
-      }
-    };
+            "webhook": {
+                "id": 2001,
+                "name": "Sharepoint"
+            },
+            "event": {
+                "id": "4d9edbed-be35-4fcf-b20a-910093e2a628",
+                "name": "CHANNEL_ASSETPUBLISHED",
+                "registeredAt": "2022-05-23T22:27:05.646Z",
+                "initiatedBy": "bcoats@redstonecontentsolutions.com"
+            },
+            "entity": {
+                "id": "RCHANNEL24E15FC9CB894875A3AAA1500C95B3AC",
+                "name": "Sharepoint",
+                "items": [
+                    {
+                        "translatable": false,
+                        "description": "",
+                        "language": "en-US",
+                        "updatedDate": {
+                            "value": "2022-05-23T22:27:01.449Z",
+                            "timezone": "UTC"
+                        },
+                        "type": "File",
+                        "createdDate": {
+                            "value": "2022-04-18T13:54:57.726Z",
+                            "timezone": "UTC"
+                        },
+                        "fileExtension": "pdf",
+                        "name": "Northeast Controls_QT BFV & BV_From Contracts - (VC000-06793-EN).pdf",
+                        "repositoryId": "2A13710F0E3C401DA0DB716A711F88F3",
+                        "links": [
+                            {
+                                "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/CONTA3866F34FEB3421F9877FABE836C1FDF",
+                                "rel": "self",
+                                "method": "GET",
+                                "mediaType": "application/json"
+                            }
+                        ],
+                        "id": "CONTA3866F34FEB3421F9877FABE836C1FDF",
+                        "fields": {
+                            "metadata": {
+                                "width": "-1",
+                                "height": "-1"
+                            },
+                            "size": 101221,
+                            "native": {
+                                "links": [
+                                    {
+                                        "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONTA3866F34FEB3421F9877FABE836C1FDF/native/Northeast+Controls_QT+BFV+%26amp%3B+BV_From+Contracts+-+%28VC000-06793-EN%29.pdf",
+                                        "rel": "self",
+                                        "method": "GET",
+                                        "mediaType": "application/pdf"
+                                    }
+                                ]
+                            },
+                            "renditions": [
+                                {
+                                    "name": "Thumbnail",
+                                    "formats": [
+                                        {
+                                            "format": "jpg",
+                                            "size": 0,
+                                            "mimeType": "image/jpeg",
+                                            "metadata": {
+                                                "width": "0",
+                                                "height": "0"
+                                            },
+                                            "links": [
+                                                {
+                                                    "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONTA3866F34FEB3421F9877FABE836C1FDF/Thumbnail/Northeast+Controls_QT+BFV+%26amp%3B+BV_From+Contracts+-+%28VC000-06793-EN%29.pdf?format=jpg&type=responsiveimage",
+                                                    "rel": "self",
+                                                    "method": "GET",
+                                                    "mediaType": "image/jpeg"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "type": "responsiveimage"
+                                },
+                                {
+                                    "name": "Small",
+                                    "formats": [
+                                        {
+                                            "format": "jpg",
+                                            "size": 0,
+                                            "mimeType": "image/jpeg",
+                                            "metadata": {
+                                                "width": "0",
+                                                "height": "0"
+                                            },
+                                            "links": [
+                                                {
+                                                    "href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONTA3866F34FEB3421F9877FABE836C1FDF/Small/Northeast+Controls_QT+BFV+%26amp%3B+BV_From+Contracts+-+%28VC000-06793-EN%29.pdf?format=jpg&type=responsiveimage",
+                                                    "rel": "self",
+                                                    "method": "GET",
+                                                    "mediaType": "image/jpeg"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "type": "responsiveimage"
+                                }
+                            ],
+                            "mimeType": "application/pdf",
+                            "fileGroup": "Documents",
+                            "fileType": "pdf"
+                        },
+                        "slug": "file-1481786109679-northeast-controls_qt-bfv--amp--bv_from-contracts---(vc000-06793-en)"
+                    }
+                ]
+            }
+        };
 		let arOutput = []
 		const objApplication = {
 			"clientID": objContext._config.clientID,
@@ -139,31 +139,6 @@ fdk.handle(
       "taxonomyRootId": objContext._config.taxonomyRootId,
       // Emerson Automation Solutions (EMR): A3EC1D2F978646A9A7C5EFD003B5535C
 		}
-  
-    const getTaxonomyData = async (strToken) => {
-      const strUrl = `${objApplication.host}/content/management/api/v1.1/taxonomies/${objApplication.taxonomyRootId}/categories`;
-      //set basic 'form' headers
-      let options = {
-        method: 'GET',
-        headers: {
-          'X-Requested-With': 'XMLHttpRequest',
-          'Authorization': `Bearer ${strToken}`
-        }
-      }
-      // @ts-expect-error
-      
-      let req = await fetch(strUrl, options)
-      let res = await req.json()
-      return res
-    }
-    const shapeTaxonomyData = (id, arNodes) => {
-      let arToReturn = arNodes.filter(n => n.parentId === id);
-      arToReturn.map(child => {
-          child.children = shapeTaxonomyData(child.id, arNodes)
-          return child;
-      })
-      return arToReturn;
-    }
     const getToken = async () => {
       let strCredentialsEncoded = Buffer.from(`${objApplication.clientID}:${objApplication.clientSecret}`).toString('base64')
       let params = new URLSearchParams()
@@ -197,27 +172,47 @@ fdk.handle(
       let res = await req.json()
       return res
     }
+    const getCategoryPath = async (strCategoryId, strToken) => {
+      //set basic 'form' headers
+      let options = {
+        method: 'GET',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'Authorization': `Bearer ${strToken}`
+        }
+      }
+      // @ts-expect-error
+      // /content/management/api/v1.1/taxonomies/A3EC1D2F978646A9A7C5EFD003B5535C/categories/346E4123282B445E9A980DC8DFD2B976?q=(status%20eq%20%22draft%22)&fields=idPath,namePath
+      let req = await fetch(`${objApplication.host}/content/management/api/v1.1/taxonomies/${objApplication.taxonomyRootId}/categories/${strCategoryId}?fields=idPath,namePath`, options)
+      let res = await req.json()
+      // /Distribution/Location/World Area/Asia/Hong Kong
+      let arPathPieces = res.namePath.split('/');
+      arPathPieces = [arPathPieces[1], arPathPieces.slice(2).join('/')];
+      return arPathPieces;
+    }
+    
     const strToken = await getToken();
-    let objFullTaxonomy = await getTaxonomyData(strToken);
-    objFullTaxonomy = shapeTaxonomyData(objApplication.taxonomyRootId, objFullTaxonomy.items);
     // Get the items from the publish to loop over
 		let arPublishedItems = objInput.entity.items
+    let objColumns = {};
     // Iterate over each of the items that has been published and then attach it's taxonomy to it
     await forEachSeries(arPublishedItems, async (objItem) => {
       const objAssetTaxonomy = await getTaxonomyForAsset(objItem, strToken);
-      if (objAssetTaxonomy && objAssetTaxonomy.data && objAssetTaxonomy.data[0]) {
-        const objColumns = {};
-        objAssetTaxonomy.data[0].categories.forEach(category => {
-          const strParentId = objFullTaxonomy.filter(n => category.id === n.id).parentId;
-          // Check if the parent/column exists
-          if (objColumns[strParentId]) {
-            objColumns[strParentId].push(category)
+      try {
+        await forEachSeries(objAssetTaxonomy.data[0].categories, async (category) => {
+          const arPathPieces = await getCategoryPath(category.id, strToken);
+          const strColumnName = arPathPieces[0];
+          const strColumnData = arPathPieces[1];
+          if (objColumns[strColumnName]) {
+            objColumns[strColumnName].push(strColumnData);
           } else {
-            objColumns[strParentId] = [category];
+            objColumns[strColumnName] = [strColumnData];
           }
         });
-        objItem.columns = objColumns;
+      } catch (e) {
+        console.error('Unable to retrieve taxonomy Shape:', e);
       }
+      objItem.columns = objColumns;
       arOutput.push(objItem);
     });
     // Return the content with the taxonomy added 
