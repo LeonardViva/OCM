@@ -7,8 +7,8 @@
 	"license": "Apache-2.0",
 	"dependencies": {
 		"@fnproject/fdk": ">=0.0.34",
-		"node-fetch": "^2.6.7",
-		"modern-async": "^1.1.2"
+		"modern-async": "^1.1.2",
+		"node-fetch": "^2.6.7"
 	},
 	"scripts": {
 		"deploy": "fn deploy --app ocm-webhook-shapers",
