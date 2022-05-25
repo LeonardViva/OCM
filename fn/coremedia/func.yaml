@@ -1,6 +1,6 @@
 schema_version: 20180708
 name: coremedia
-version: 0.0.2
+version: 0.0.6
 runtime: node
 build_image: fnproject/node:14-dev
 run_image: fnproject/node:14

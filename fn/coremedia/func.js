@@ -1,83 +1,146 @@
-const fdk = require('@fnproject/fdk'); // https://github.com/fnproject/fdk-node
+// @ts-check
+// @ts-expect-error
+const fdk = require('@fnproject/fdk') // https://github.com/fnproject/fdk-node
+const fetch = require('node-fetch')
+// @ts-expect-error
+const {
+	forEachSeries
+} = require('modern-async')
 
-const translateLanguageCode = function(strLanguageCode) {
-  // what are all of there Language codes?
-  const dicLanguageList = {
-    'en-US': {language_code: 'L000003', iso_code: 'en-gb'}
-  }
-  return dicLanguageList[strLanguageCode];
-}
+// Globally scope our configuration
+let objApplication = {}
 
-fdk.handle(function(oceData, ctx){
-  console.log('oceData', oceData);
-  console.log('ctx', ctx);
-  // get only the published item/items
-  const datePublishedTime = oceData.event.registeredAt;
-  const arPublishedItems = oceData.entity.items;
-  let objCoreMediaData = {}
 
-  arPublishedItems.map(publishedItem => {
-    objCoremediaData = {
-      PushNotificationPdfDocument: {
-        "Countries": [],
-        "Categories": [],
-        "TaxonomyList": [],
-        "Entry": [],
-        // Need to fill out bdog
-        "Attributes": null,
-        // Need to fill out bdog
-        "StringDefinitions": [
-          // These are the three string definitions we know about. What other string definition ids are defined?
-          {
-              // SD000018 = ManufacturePartNumber
-              "DefinitionId": "SD000018",
-              "Name": "ManufacturePartNumber",
-              "Value": publishedItem.fields.product_code// Maps to Coremedia's product
-          },
-          {
-              // SD000020 is the id for ExportDocumentType
-              // Manuals is one valid value, what are the others?
-              "DefinitionId": "SD000020",
-              "Name": "ExportDocumentType",
-              "Value": publishedItem.fields.document_type // emerson.com document section; RCS - document_type
-          },
-          {
-              // SD000036 is the id for NumberOfPages
-              "DefinitionId": "SD000036",
-              "Name": "NumberOfPages",
-              "Value": publishedItem.fields.page_count
-          }           
-        ],
-        "DocumentType": null,// Replace with the correct Doc type when marvin gives updates
-        "Products": publishedItem.fields.products,
-        "SEO": {
-          "Title": publishedItem.fields.document_title, // RCS - document_title
-          "Keywords": publishedItem.fields.seo_metadata, // RCS - seo_metadata
-          "Description": publishedItem.description // RCS - OCM Document Description
-        },
-        "Title": publishedItem.fields.document_title, // RCS - document_title
-        "Brand": publishedItem.fields.brand_code, // RCS - asset field (dropdown)
-        // OCM published URL // this is the native resolution, not sure if pdfs have a different structure
-        "FileUrl": publishedItem.links[0].href,
-        "FileType": null, // RCS - guessing FT00001 is a PDF. No mapping available in the spreadsheet
-        // for now just passing the oce date
-        "FileTimeStamp": publishedItem.createdDate.value, // created date/time. question about OG creation date (new document_date field) or just pass the OCM creation date
-        "FileMD5Hash": null, // RCS - always null
-        // What is this? How does it relate to each product? HArd coded for now BDOG
-        "McmId": null, 
-        // ISO code en-gb is language code L000003, but so is every other language
-        // Where do the MCM language ids apply?
-        "iso_code": translateLanguageCode(publishedItem.language).iso_code,
-        "LanguageCode": translateLanguageCode(publishedItem.language).language_code, // RCS - OCM language code (conversion)
-        // What is this? How does it relate to the json file? Hard coded for now BDOG
-        "TriggerEvent": "EV000001", // required
-        // UPDATE, what other actions are possible? For now set to update always
-        "Action": "UPDATE", // required
-        // Action timestamp
-        "TimeStamp": datePublishedTime,
-      }
-    }
-  }); 
-  console.log('\nInside Node shaping function')
-  return objCoreMediaData;
-})
+fdk.handle(
+	/**
+	 * Function Handler
+	 * @param {object} objInput JSON request payload
+	 * @param {object} objContext Function Context
+	 * @returns Promise<object> Object containing an array of the POST status responses
+	 */
+	async (objInput, objContext) => {
+		if (typeof objInput.entity == 'undefined') {
+			objInput = {
+				"webhook": {
+					"id": 2001,
+					"name": "Sharepoint"
+				},
+				"event": {
+					"id": "4d9edbed-be35-4fcf-b20a-910093e2a628",
+					"name": "CHANNEL_ASSETPUBLISHED",
+					"registeredAt": "2022-05-23T22:27:05.646Z",
+					"initiatedBy": "bcoats@redstonecontentsolutions.com"
+				},
+				"entity": {
+					"id": "RCHANNEL24E15FC9CB894875A3AAA1500C95B3AC",
+					"name": "Sharepoint",
+					"items": [{
+						"translatable": false,
+						"description": "",
+						"language": "en-US",
+						"updatedDate": {
+							"value": "2022-05-23T22:27:01.449Z",
+							"timezone": "UTC"
+						},
+						"type": "File",
+						"createdDate": {
+							"value": "2022-04-18T13:54:57.726Z",
+							"timezone": "UTC"
+						},
+						"fileExtension": "pdf",
+						"name": "Northeast Controls_QT BFV & BV_From Contracts - (VC000-06793-EN).pdf",
+						"repositoryId": "2A13710F0E3C401DA0DB716A711F88F3",
+						"links": [{
+							"href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/items/CONTA3866F34FEB3421F9877FABE836C1FDF",
+							"rel": "self",
+							"method": "GET",
+							"mediaType": "application/json"
+						}],
+						"id": "CONTA3866F34FEB3421F9877FABE836C1FDF",
+						"fields": {
+							"metadata": {
+								"width": "-1",
+								"height": "-1"
+							},
+							"size": 101221,
+							"native": {
+								"links": [{
+									"href": "https://finalcontroldam-emersonfinalcontrol.cec.ocp.oraclecloud.com/content/management/api/v1.1/assets/CONTA3866F34FEB3421F9877FABE836C1FDF/native/Northeast+Controls_QT+BFV+%26amp%3B+BV_From+Contracts+-+%28VC000-06793-EN%29.pdf",
+									"rel": "self",
+									"method": "GET",
+									"mediaType": "application/pdf"
+								}]
+							},
+							"mimeType": "application/pdf",
+							"fileGroup": "Documents",
+							"fileType": "pdf"
+						},
+						"slug": "file-1481786109679-northeast-controls_qt-bfv--amp--bv_from-contracts---(vc000-06793-en)"
+					}]
+				}
+			}
+		}
+
+		objApplication = {
+			"clientID": objContext._config.clientID,
+			"clientSecret": objContext._config.clientSecret,
+			"scope": objContext._config.scope,
+			"idcs": objContext._config.idcs,
+			"idcsURL": `https://${objContext._config.idcs}.identity.oraclecloud.com`,
+			"host": objContext._config.ocmHost
+		}
+		const getToken = async () => {
+			let strCredentialsEncoded = Buffer.from(`${objApplication.clientID}:${objApplication.clientSecret}`).toString('base64')
+			let params = new URLSearchParams()
+			params.append('grant_type', 'client_credentials')
+			params.append('scope', objApplication.scope)
+			let options = {
+				method: 'post',
+				headers: {
+					'Authorization': `Basic ${strCredentialsEncoded}`,
+					'Content-Type': 'application/x-www-form-urlencoded'
+				},
+				body: params
+			}
+			// @ts-expect-error
+			let reqToken = await fetch(`${objApplication.idcsURL}/oauth2/v1/token`, options)
+			let resToken = await reqToken.json()
+			return resToken.access_token
+		}
+		objApplication.token = await getToken()
+
+		const getTaxonomyForAsset = async (objAsset) => {
+			// @ts-expect-error
+			let req = await fetch(`${objApplication.host}/content/management/api/v1.1/items/${objAsset.id}/taxonomies`, {
+				method: 'GET',
+				headers: {
+					'X-Requested-With': 'XMLHttpRequest',
+					'Authorization': `Bearer ${objApplication.token}`
+				}
+			})
+			let objCategories = await req.json()
+			return objCategories
+		}
+
+		const arItems = objInput.entity.items
+		await forEachSeries(arItems,
+			/***
+			 * Attach taxonomy to each published item
+			 * @param {object} objItem OCM document that has been published
+			 */
+			async (objItem) => {
+				const objAssetTaxonomy = await getTaxonomyForAsset(objItem)
+				objItem.taxonomy = objAssetTaxonomy.data
+			}
+		)
+ 		// Uncomment to send a post request with the contents of the webhook and attached taxonomy/categories
+		/*
+ 		// @ts-expect-error
+		await fetch(objContext._config.microAppUrl, {
+			method: 'POST',
+			body: objInput
+		}) 
+		*/
+		return objInput
+	}
+)
