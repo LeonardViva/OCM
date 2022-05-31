@@ -3,9 +3,7 @@
 const fdk = require('@fnproject/fdk') // https://github.com/fnproject/fdk-node
 const fetch = require('node-fetch')
 // @ts-expect-error
-const {
-	forEachSeries
-} = require('modern-async')
+const {	forEachSeries } = require('modern-async')
 
 // Globally scope our configuration
 let objApplication = {}
@@ -134,13 +132,17 @@ fdk.handle(
 			}
 		)
  		// Uncomment to send a post request with the contents of the webhook and attached taxonomy/categories
-		/*
+		let buffCredentials = Buffer.from(`${objContext._config.microAppUsername}:${objContext._config.microAppPassword}`)
  		// @ts-expect-error
-		await fetch(objContext._config.microAppUrl, {
+		const reqMicroApp = await fetch(objContext._config.microAppUrl, {
 			method: 'POST',
-			body: objInput
+			body: JSON.stringify(objInput),
+			headers: {
+				'Authorization': `Basic ${buffCredentials.toString('base64')}`,
+				'Content-Type': 'application/json'
+			}
 		}) 
-		*/
-		return objInput
+		const resMicroApp = await reqMicroApp.json()
+		return {creds: buffCredentials.toString('base64'), objInput, resMicroApp}
 	}
 )
