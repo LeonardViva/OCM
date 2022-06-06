@@ -14,6 +14,9 @@ fdk.handle(
 	 * @returns Promise<object> Object containing an array of the POST status responses
 	 */
 	async (objInput, objContext) => {
+    if (objContext._headers['Fn-Http-H-Token'] != objContext._config.token) {
+      return {status: 'Unauthorized. Invalid Token'}
+    }
     
     // Test Data, Uncomment and run deploy and invoke to get output 
     // objInput = {
