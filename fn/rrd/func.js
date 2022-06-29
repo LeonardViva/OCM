@@ -34,7 +34,8 @@ fdk.handle(
 			"scope": objContext._config.scope,
 			"idcs": objContext._config.idcs,
 			"idcsURL": `https://${objContext._config.idcs}.identity.oraclecloud.com`,
-			"host": objContext._config.ocmHost
+			"host": objContext._config.ocmHost,
+			"channelToken": objContext._config.channelToken
 		}
 
 
@@ -56,7 +57,7 @@ fdk.handle(
 						// Asset name
 						"FileName": objItem.name,
 						// Published asset url
-						"FileUrl": objItem.fields.native.links[0].href
+						"FileUrl": `${objItem.fields.native.links[0].href.replace('/content/management/api', '/content/published/api')}?channelToken=${objApplication.channelToken}`
 					}
 				}
 				objPayload = replaceAll('"', '&quot;', JSON.stringify(objPayload))
