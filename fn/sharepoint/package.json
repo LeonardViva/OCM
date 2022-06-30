@@ -6,9 +6,12 @@
 	"author": "",
 	"license": "Apache-2.0",
 	"dependencies": {
+		"@azure/msal-node": "^1.10.0",
 		"@fnproject/fdk": ">=0.0.34",
-		"node-fetch": "^2.6.7",
-		"modern-async": "^1.1.2"
+		"@microsoft/microsoft-graph-client": "^3.0.2",
+		"modern-async": "^1.1.2",
+		"msal": "^1.4.16",
+		"node-fetch": "^2.6.7"
 	},
 	"scripts": {
 		"deploy": "fn deploy --app ocm-webhook-shapers",

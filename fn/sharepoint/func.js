@@ -2,9 +2,10 @@ const fdk = require('@fnproject/fdk'); // https://github.com/fnproject/fdk-node
 const fs = require('fs');
 // @ts-expect-error
 const fetch = require('node-fetch');
+const msal = require("@azure/msal-node");
+const Msal = require("msal");
 // @ts-expect-error
 const {	forEachSeries } = require('modern-async')
-
 
 fdk.handle(
 	/**
@@ -214,6 +215,7 @@ fdk.handle(
             objColumns[strColumnName] = [strColumnData];
           }
         });
+    
       } catch (e) {
         console.error('Unable to retrieve taxonomy Shape:', e);
       }
@@ -221,67 +223,145 @@ fdk.handle(
       objItem.columns = objColumns;
       arOutput.push(objItem);
     });
+
+    if(arOutput[0] != {}){
+      let buffCredentials = Buffer.from(`${objContext._config.microAppUsername}:${objContext._config.microAppPassword}`)
+      // @ts-expect-error
+      const reqMicroApp = await fetch(objContext._config.microAppUrl, {
+        method: 'POST',
+        body: JSON.stringify(arOutput[0]),
+        headers: {
+          'Authorization': `Basic ${buffCredentials.toString('base64')}`,
+          'Content-Type': 'application/json'
+        }
+      }) 
+      const resMicroApp = await reqMicroApp.json()
+      const arOutput_data = arOutput[0]
+      return {creds: buffCredentials.toString('base64'), arOutput_data, resMicroApp}
+    }
+    
+
+    //const getAccessToken = async()=>{
+      //Approach 1
+      // const msalConfig = {
+      //   auth: {
+      //       clientId: "585fa2f7-1588-4145-a991-b4f8cd6f2c17",
+      //       authority: "https://login.microsoftonline.com/common/",
+      //   }
+      // };
+      // const pca = new msal.PublicClientApplication(msalConfig);
+
+      // const usernamePasswordRequest = {
+      //   scopes: ["user.read"],
+      //   username: "leonard.viva@emerson.com", // Add your username here
+      //   password: "@Tupang110119", // Add your password here
+      // };
+      // let req = await pca.acquireTokenByUsernamePassword(usernamePasswordRequest).then((response) => {
+      //         console.log("acquired token by password grant");
+      //     }).catch((error) => {
+      //         console.log(error);
+      //     });
+      // const res = await req.json()
+      // return res
+
+      //Approach 2
+      // let params = new URLSearchParams()
+      // params.append('client_id', '585fa2f7-1588-4145-a991-b4f8cd6f2c17')
+      // params.append('client_secret', 'vJa8Q~DsCLenKURcnBj6zyHGf1ExM01y~Tx8Jccc')
+      // // params.append('username', 'Leonard.Viva@Emerson.onmicrosoft.com')
+      // // params.append('password', '@Tupang110119')
+      // params.append('resource', 'https://graph.microsoft.com')
+      // params.append('grant_type', 'password')
+      // let options = {
+      //   method: 'post',
+      //   body: params
+      // }
+      // // @ts-expect-error
+      // let reqToken = await fetch('https://login.microsoftonline.com/eb06985d-06ca-4a17-81da-629ab99f6505/oauth2/token', options)
+      // let resToken = await reqToken.json()
+      // return resToken
+
+      //Approach 3
+      //   let options = {
+      //       method: 'get',
+      //       headers:{
+      //         'client_id' :'585fa2f7-1588-4145-a991-b4f8cd6f2c17',
+      //         'response_type' :'code',
+      //         'response_mode' :'query',
+      //         'scope' :'offline_access%20user.read%20mail.read',
+      //         'state' :'12345',
+      //       }
+      //     }
+      //   let reqToken = await fetch('https://login.microsoftonline.com/eb06985d-06ca-4a17-81da-629ab99f6505/oauth2/v2.0/authorize?', options)  
+      //   let resToken = await reqToken.json()
+      //   return resToken
+
+    //   }
+      // const AccessToken = await getAccessToken();
     // Return the content with the taxonomy added 
-		return {
-			arOutput
-		}
+		// return {
+		// 	arOutput
+		// }
 })
+
+
+
 // Early Sharepoint connection investigation
 // https://github.com/Ramakrishnan-1/Upload-Files-to-Document-Library-using-SharePoint-RESTAPI/blob/main/UploadDoc.js
 // const strSharepointUrl = '';
 // fdk.handle(
 //   async (objInput, objContext) => {
-//   // Is this supposed to be the emerson sharepoint as tenant? Maybe just common?
-//   // https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
-//   // const objSharepointApp = {
-//   //   client_id: 'replace me with clientid',
-//   //   client_secret: '',
-//   //   response_type:'code',
-//   //   redirect_uri: '',
-//   //   response_mode: 'query',
-//   //   scope:"",
-//   //   grant_type: 'authorization_code',
-//   //   state: '',
-//   // };
-//   // const getSharepointToken = async () => {
-//   //   // const objTenent 
-//   //   let params = new URLSearchParams()
-//   //   let options = {
-//   //     method: 'post',
-//   //     headers: {
-//   //       'Content-Type': 'application/x-www-form-urlencoded'
-//   //     },
-//   //     body: params
-//   //   }
-//   //   // @ts-expect-error
-//   //   let reqToken = await fetch(`https://login.microsoftonline.com/${objTenent}/oauth2/v2.0/authorize?`, options)
-//   //   let resToken = await reqToken.json()
-//   //   return resToken.access_token
-//   // }
+//   //Is this supposed to be the emerson sharepoint as tenant? Maybe just common?
+//   //https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
+//   const objSharepointApp = {
+//     client_id: '585fa2f7-1588-4145-a991-b4f8cd6f2c17',
+//     client_secret: '',
+//     response_type:'code',
+//     redirect_uri: '',
+//     response_mode: 'query',
+//     scope:"",
+//     grant_type: 'authorization_code',
+//     state: '',
+//   };
+//   const getSharepointToken = async () => {
+//     const objTenent = "eb06985d-06ca-4a17-81da-629ab99f6505"
+//     let params = new URLSearchParams()
+//     let options = {
+//       method: 'post',
+//       headers: {
+//         'Content-Type': 'application/x-www-form-urlencoded'
+//       },
+//       body: params
+//     }
+//     // @ts-expect-error
+//     let reqToken = await fetch(`https://login.microsoftonline.com/${objTenent}/oauth2/v2.0/authorize?`, options)
+//     let resToken = await reqToken.json()
+//     return resToken.access_token
+//   }
 
-//   // const postUploadFile = async () => {
-//   //     let params = new URLSearchParams()
-//   //     const strFilePostUrl = `https://${strSharepointUrl}/_api/web/GetFolderByServerRelativeUrl('/Folder Name')/Files/add(url='a.txt',overwrite=true)`
-//   //     let options = {
-//   //       method: 'post',
-//   //       headers: {
-//   //         'Authorization': "Bearer " + accessToken,
-//   //         'Content-Length': 'Grab from the header',
-//   //         'X-RequestDigest': "{form_digest_value}",
-//   //         'Content-Type': 'application/x-www-form-urlencoded',
-//   //       },
-//   //       // body: params
-//   //     }
-//   //     // @ts-expect-error
-//   //     let reqToken = await fetch(strFilePostUrl, options)
-//   //     let resToken = await reqToken.json()
-//   //     return resToken.access_token
-//   //   }
+  // const postUploadFile = async () => {
+  //     let params = new URLSearchParams()
+  //     const strFilePostUrl = `https://${strSharepointUrl}/_api/web/GetFolderByServerRelativeUrl('/Folder Name')/Files/add(url='a.txt',overwrite=true)`
+  //     let options = {
+  //       method: 'post',
+  //       headers: {
+  //         'Authorization': "Bearer " + accessToken,
+  //         'Content-Length': 'Grab from the header',
+  //         'X-RequestDigest': "{form_digest_value}",
+  //         'Content-Type': 'application/x-www-form-urlencoded',
+  //       },
+  //       // body: params
+  //     }
+  //     // @ts-expect-error
+  //     let reqToken = await fetch(strFilePostUrl, options)
+  //     let resToken = await reqToken.json()
+  //     return resToken.access_token
+  //   }
   
 
   
-//   let output = fs.readdirSync(input.folder)
+  //let output = fs.readdirSync(input.folder)
 //   return {
-//     output
+//     getSharepointToken
 //   }
 // })
