@@ -144,7 +144,7 @@ fdk.handle(
 				if (reqPost.status == 200 && resPost.indexOf('<PostFileResult>&lt;Response&gt;OK&lt;/Response&gt;</PostFileResult>') > 0) {
 					status = 'success'
 				}
-				arOutput.push({resPost, status})
+				arOutput.push({rrdBody: body, resPost, status})
 			})
 		return {arOutput}
 		
